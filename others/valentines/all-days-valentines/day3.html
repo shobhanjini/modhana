@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 - For Shobha 💗</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd6e8 50%, #ffc0e1 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 20px;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 25px;
+            animation: float 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            border-radius: 25px;
+            padding: 50px 45px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 25px 70px rgba(255, 20, 147, 0.4);
+            text-align: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+            color: white;
+        }
+
+        .day-number {
+            font-size: 1em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 3.2em;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .name {
+            font-size: 2.5em;
+            color: #ffd700;
+            margin: 25px 0;
+            font-weight: 600;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        .message {
+            font-size: 1.4em;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .decorative-heart {
+            font-size: 2.5em;
+            margin: 15px;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .card {
+                padding: 40px 30px;
+                max-width: 100%;
+                width: 100%;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .name {
+                font-size: 2em;
+            }
+            .message {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .name {
+                font-size: 1.6em;
+            }
+            .message {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="card">
+        <div class="day-number">Day 3 of 14</div>
+        <div>
+            <span class="decorative-heart">💕</span>
+            <span class="decorative-heart" style="animation-delay: 0.2s;">💖</span>
+            <span class="decorative-heart" style="animation-delay: 0.4s;">💗</span>
+        </div>
+        <h1>My Sweetheart</h1>
+        <div class="name">Shobha</div>
+        <p class="message">
+            Every moment with you<br>
+            is a treasure I hold dear.<br>
+            Your love makes every day special.
+        </p>
+        <div>
+            <span class="decorative-heart">💝</span>
+            <span class="decorative-heart" style="animation-delay: 0.3s;">💓</span>
+            <span class="decorative-heart" style="animation-delay: 0.6s;">❤️</span>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            const hearts = ['💖', '❤️', '💕', '💗', '💓'];
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 6) + 's';
+            document.getElementById('hearts').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 9000);
+        }
+
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => createHeart(), i * 400);
+        }
+        setInterval(createHeart, 2000);
+    </script>
+</body>
+</html>
+

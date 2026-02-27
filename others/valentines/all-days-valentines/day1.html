@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - For Shobha 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            padding: 20px;
+        }
+
+        .rose-petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            border-radius: 50% 0 50% 0;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #f8b500 100%);
+            border-radius: 30px;
+            padding: 60px 50px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 30px 80px rgba(255, 20, 147, 0.4);
+            text-align: center;
+            animation: slideIn 1s ease-out;
+            margin: 20px 0;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .day-number {
+            font-size: 1.2em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #ffd700;
+            margin: 20px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        .message {
+            font-size: 1.3em;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .heart {
+            font-size: 3em;
+            margin: 20px 0;
+            animation: beat 1s ease-in-out infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .card {
+                padding: 40px 30px;
+                max-width: 100%;
+                width: 100%;
+            }
+            h1 {
+                font-size: 3em;
+            }
+            .name {
+                font-size: 2em;
+            }
+            .message {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .name {
+                font-size: 1.8em;
+            }
+            .message {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rose-petals" id="petals"></div>
+    
+    <div class="card">
+        <div class="day-number">Day 1 of 14</div>
+        <div class="heart">🌹</div>
+        <h1>My Beautiful</h1>
+        <div class="name">Shobha</div>
+        <p class="message">
+            Like a rose in full bloom,<br>
+            you bring beauty and fragrance to my life.<br>
+            Today marks the beginning of our journey together.
+        </p>
+        <div class="heart">💖</div>
+    </div>
+
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('petals').appendChild(petal);
+            
+            setTimeout(() => petal.remove(), 8000);
+        }
+
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => createPetal(), i * 200);
+        }
+        setInterval(createPetal, 1000);
+    </script>
+</body>
+</html>
+
