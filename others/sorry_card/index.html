@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I'm Sorry Shobha 💕</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Indie+Flower&family=Comfortaa:wght@300;400;700&display=swap');
         
         * {
             margin: 0;
@@ -14,8 +14,10 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0a0a0a;
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,25 +26,14 @@
             position: relative;
         }
 
-        /* Animated gradient background */
-        .animated-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ff6b6b, #c44569);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes gradientShift {
+        @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Animated stars background */
-        .stars {
+        /* Floating hearts background */
+        .heart-bg {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -50,108 +41,42 @@
             z-index: 1;
         }
 
-        .star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-        }
-
-        @keyframes twinkle {
-            0%, 100% { 
-                opacity: 0.2;
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 1;
-                transform: scale(1.5);
-            }
-        }
-
-        /* Floating hearts */
-        .hearts-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-        }
-
         .floating-heart {
             position: absolute;
-            font-size: 35px;
-            opacity: 0.8;
-            animation: floatUp 10s linear infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.6));
+            font-size: 30px;
+            opacity: 0.6;
+            animation: floatHeart 15s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 20, 147, 0.8));
         }
 
-        @keyframes floatUp {
+        @keyframes floatHeart {
             0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg) scale(0.5);
+                transform: translateY(100vh) translateX(0) rotate(0deg) scale(0.3);
                 opacity: 0;
             }
             10% {
-                opacity: 0.8;
+                opacity: 0.6;
             }
             90% {
-                opacity: 0.8;
+                opacity: 0.6;
             }
             100% {
-                transform: translateY(-100px) translateX(100px) rotate(360deg) scale(1.2);
+                transform: translateY(-100px) translateX(150px) rotate(360deg) scale(1.2);
                 opacity: 0;
             }
         }
 
-        /* Rose petals */
-        .petals-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .petal {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            border-radius: 50% 0 50% 0;
-            opacity: 0.7;
-            animation: fallPetals 12s linear infinite;
-        }
-
-        @keyframes fallPetals {
-            0% {
-                transform: translateY(-100px) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(100vh) translateX(200px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Main card container */
-        .card-container {
+        /* Main container - envelope style */
+        .envelope-container {
             position: relative;
             z-index: 10;
-            perspective: 1200px;
-            animation: cardEntrance 1s ease-out;
+            perspective: 1000px;
+            animation: envelopeEntrance 1.2s ease-out;
         }
 
-        @keyframes cardEntrance {
+        @keyframes envelopeEntrance {
             0% {
-                transform: scale(0.5) rotateY(180deg);
+                transform: scale(0.3) rotateY(90deg);
                 opacity: 0;
             }
             100% {
@@ -160,124 +85,211 @@
             }
         }
 
-        .card {
-            width: 480px;
-            height: 600px;
+        .envelope {
+            width: 600px;
+            height: 700px;
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
+            transition: transform 0.6s ease;
         }
 
-        .card:hover {
-            transform: rotateY(8deg) rotateX(5deg) scale(1.02);
+        .envelope:hover {
+            transform: translateY(-10px) rotateX(5deg);
         }
 
-        .card-front,
-        .card-back {
+        /* Envelope base */
+        .envelope-base {
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
-            border-radius: 25px;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e6 50%, #ffd6e0 100%);
+            border-radius: 20px;
             box-shadow: 
-                0 25px 80px rgba(255, 20, 147, 0.5),
-                0 0 0 3px rgba(255, 255, 255, 0.1),
-                inset 0 0 60px rgba(255, 255, 255, 0.1);
+                0 30px 100px rgba(255, 20, 147, 0.4),
+                0 0 0 4px rgba(255, 255, 255, 0.3),
+                inset 0 0 80px rgba(255, 182, 193, 0.2);
+            overflow: hidden;
+        }
+
+        .envelope-base::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.3) 0%, transparent 50%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Content inside envelope */
+        .letter-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            padding: 60px 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 50px;
             text-align: center;
-            overflow: hidden;
         }
 
-        .card-front::before,
-        .card-back::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
-        }
-
-        .card-front {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 30%, #c44569 60%, #ff8a95 100%);
-            color: white;
-        }
-
-        .card-back {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 30%, #4facfe 60%, #00f2fe 100%);
-            color: white;
-            transform: rotateY(180deg);
-        }
-
-        .card.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .heart-icon {
-            font-size: 5em;
-            margin: 15px 0;
-            animation: heartbeat 1.2s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        /* Teddy bear container */
+        .teddy-container {
             position: relative;
-            z-index: 1;
+            margin-bottom: 30px;
+            animation: teddyBounce 2s ease-in-out infinite;
         }
 
-        @keyframes heartbeat {
+        @keyframes teddyBounce {
             0%, 100% {
-                transform: scale(1) rotate(0deg);
+                transform: translateY(0) rotate(-2deg);
             }
-            20% {
-                transform: scale(1.3) rotate(-5deg);
-            }
-            40% {
-                transform: scale(1) rotate(5deg);
-            }
-            60% {
-                transform: scale(1.2) rotate(-3deg);
-            }
-            80% {
-                transform: scale(1) rotate(3deg);
+            50% {
+                transform: translateY(-15px) rotate(2deg);
             }
         }
 
-        .sorry-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 5em;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-shadow: 
-                2px 2px 10px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(255, 255, 255, 0.6),
-                0 0 60px rgba(255, 20, 147, 0.4);
-            animation: glow 2.5s ease-in-out infinite alternate, fadeInUp 1s ease-out 0.3s both;
+        .teddy-bear {
+            font-size: 120px;
+            filter: drop-shadow(0 10px 20px rgba(139, 69, 19, 0.4));
             position: relative;
-            z-index: 1;
+            display: inline-block;
+            animation: teddyWiggle 3s ease-in-out infinite;
         }
 
-        @keyframes glow {
+        @keyframes teddyWiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+
+        /* Hearts around teddy */
+        .teddy-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .teddy-heart {
+            position: absolute;
+            font-size: 35px;
+            animation: heartOrbit 4s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
+        }
+
+        .teddy-heart:nth-child(1) {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0s;
+        }
+
+        .teddy-heart:nth-child(2) {
+            top: 50%;
+            left: -30px;
+            transform: translateY(-50%);
+            animation-delay: 1s;
+        }
+
+        .teddy-heart:nth-child(3) {
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+            animation-delay: 2s;
+        }
+
+        .teddy-heart:nth-child(4) {
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 3s;
+        }
+
+        @keyframes heartOrbit {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(-50%, -50%) rotate(90deg) scale(1.3);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg) scale(1);
+            }
+            75% {
+                transform: translate(-50%, -50%) rotate(270deg) scale(1.3);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) scale(1);
+            }
+        }
+
+        /* Title */
+        .sorry-title {
+            font-family: 'Kalam', cursive;
+            font-size: 4.5em;
+            font-weight: 700;
+            margin: 30px 0 20px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+            animation: titleGlow 3s ease-in-out infinite, fadeInDown 1s ease-out 0.3s both;
+            position: relative;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(255, 20, 147, 0.9));
+            }
+        }
+
+        @keyframes fadeInDown {
             from {
-                text-shadow: 
-                    2px 2px 10px rgba(0, 0, 0, 0.4),
-                    0 0 30px rgba(255, 255, 255, 0.6),
-                    0 0 60px rgba(255, 20, 147, 0.4);
+                opacity: 0;
+                transform: translateY(-30px);
             }
             to {
-                text-shadow: 
-                    2px 2px 10px rgba(0, 0, 0, 0.4),
-                    0 0 40px rgba(255, 255, 255, 0.9),
-                    0 0 80px rgba(255, 20, 147, 0.7);
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Name */
+        .name {
+            font-family: 'Indie Flower', cursive;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #d63384;
+            text-shadow: 
+                2px 2px 8px rgba(255, 182, 193, 0.8),
+                0 0 20px rgba(255, 20, 147, 0.6);
+            animation: namePulse 2s ease-in-out infinite, fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes namePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
             }
         }
 
@@ -292,62 +304,130 @@
             }
         }
 
-        .name {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            font-weight: 600;
+        /* Love message */
+        .love-message {
+            font-family: 'Indie Flower', cursive;
+            font-size: 2.8em;
             margin: 25px 0;
-            color: #ffd700;
+            color: #ff1493;
             text-shadow: 
-                2px 2px 8px rgba(0, 0, 0, 0.6),
-                0 0 20px rgba(255, 215, 0, 0.8);
-            animation: pulse 2.5s ease-in-out infinite, fadeInUp 1s ease-out 0.5s both;
-            position: relative;
-            z-index: 1;
+                2px 2px 6px rgba(255, 182, 193, 0.8),
+                0 0 15px rgba(255, 20, 147, 0.5);
+            animation: heartbeat 1.5s ease-in-out infinite, fadeInUp 1s ease-out 0.7s both;
         }
 
-        @keyframes pulse {
+        @keyframes heartbeat {
             0%, 100% {
                 transform: scale(1);
             }
-            50% {
+            10% {
                 transform: scale(1.15);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.1);
+            }
+            40% {
+                transform: scale(1);
             }
         }
 
-        .love-message {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
-            margin: 25px 0;
-            color: #ffd700;
-            text-shadow: 
-                2px 2px 8px rgba(0, 0, 0, 0.6),
-                0 0 20px rgba(255, 215, 0, 0.8);
-            animation: heartbeat 1.5s ease-in-out infinite, fadeInUp 1s ease-out 0.7s both;
-            position: relative;
-            z-index: 1;
-        }
-
+        /* Message text */
         .message {
-            font-size: 1.5em;
-            line-height: 2;
-            margin: 25px 0;
-            font-weight: 300;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            font-size: 1.6em;
+            line-height: 1.8;
+            margin: 30px 0;
+            color: #8b4a6b;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(255, 182, 193, 0.5);
             animation: fadeInUp 1s ease-out 0.9s both;
-            position: relative;
-            z-index: 1;
         }
 
+        /* Heart decorations */
+        .heart-decoration {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.7;
+            animation: floatAround 6s ease-in-out infinite;
+        }
+
+        .heart-decoration:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .heart-decoration:nth-child(2) {
+            top: 15%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .heart-decoration:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .heart-decoration:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(20px, -20px) rotate(90deg) scale(1.2);
+            }
+            50% {
+                transform: translate(-15px, -30px) rotate(180deg) scale(1);
+            }
+            75% {
+                transform: translate(-20px, 15px) rotate(270deg) scale(1.2);
+            }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 2s ease-out forwards;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                opacity: 1;
+                transform: scale(0) translateY(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(2) translateY(-40px) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Click hint */
         .click-hint {
             position: absolute;
-            bottom: 25px;
-            font-size: 1em;
-            opacity: 0.9;
+            bottom: 30px;
+            font-size: 1.1em;
+            color: #d63384;
+            opacity: 0.8;
             animation: fadeInOut 2.5s ease-in-out infinite, fadeInUp 1s ease-out 1.1s both;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
+            text-shadow: 1px 1px 3px rgba(255, 182, 193, 0.5);
         }
 
         @keyframes fadeInOut {
@@ -359,223 +439,162 @@
             }
         }
 
+        /* Back side content */
+        .back-content {
+            display: none;
+        }
+
+        .envelope.flipped .letter-content {
+            display: none;
+        }
+
+        .envelope.flipped .back-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 50px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+        }
+
         .apology-message {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8em;
-            line-height: 2.2;
-            margin: 25px 0;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            font-family: 'Indie Flower', cursive;
+            font-size: 2em;
+            line-height: 2;
+            margin: 30px 0;
+            color: #8b4a6b;
+            text-shadow: 1px 1px 3px rgba(255, 182, 193, 0.5);
             animation: fadeInUp 1s ease-out 0.3s both;
-            position: relative;
-            z-index: 1;
         }
 
         .signature {
-            margin-top: 35px;
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.2em;
-            color: #ffd700;
+            margin-top: 40px;
+            font-family: 'Kalam', cursive;
+            font-size: 2.5em;
+            color: #d63384;
             text-shadow: 
-                2px 2px 8px rgba(0, 0, 0, 0.6),
-                0 0 20px rgba(255, 215, 0, 0.8);
+                2px 2px 6px rgba(255, 182, 193, 0.8),
+                0 0 15px rgba(255, 20, 147, 0.5);
             animation: fadeInUp 1s ease-out 0.5s both;
-            position: relative;
-            z-index: 1;
         }
 
-        /* Enhanced sparkles effect */
-        .sparkle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: sparkleAnim 2s ease-out forwards;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        .back-teddy {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: teddyBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(139, 69, 19, 0.4));
         }
 
-        .sparkle::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        @keyframes sparkleAnim {
-            0% {
-                opacity: 1;
-                transform: scale(0) translateY(0) rotate(0deg);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.5) translateY(-30px) rotate(180deg);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0.5) translateY(-80px) rotate(360deg);
-            }
-        }
-
-        /* Particle effects */
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particleFloat 3s ease-out forwards;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) scale(0);
-            }
-        }
-
-        /* Glowing orbs */
-        .orb {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%);
-            filter: blur(40px);
-            animation: orbFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes orbFloat {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(100px, -100px) scale(1.2);
-            }
-            66% {
-                transform: translate(-100px, 100px) scale(0.8);
-            }
-        }
-
-        @media (max-width: 500px) {
-            .card {
+        /* Responsive */
+        @media (max-width: 650px) {
+            .envelope {
                 width: 90vw;
                 height: 85vh;
             }
-            .sorry-title {
-                font-size: 3.5em;
+            
+            .teddy-bear {
+                font-size: 80px;
             }
-            .name {
+            
+            .sorry-title {
                 font-size: 3em;
             }
-            .message {
-                font-size: 1.2em;
+            
+            .name {
+                font-size: 2.5em;
             }
+            
             .love-message {
                 font-size: 2em;
             }
+            
+            .message {
+                font-size: 1.3em;
+            }
+            
             .apology-message {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <div class="stars" id="stars"></div>
-    <div class="hearts-container" id="heartsContainer"></div>
-    <div class="petals-container" id="petalsContainer"></div>
-    <div class="orb" style="top: 10%; left: 10%;"></div>
-    <div class="orb" style="top: 60%; right: 10%; animation-delay: -10s;"></div>
-    <div class="orb" style="bottom: 10%; left: 50%; animation-delay: -5s;"></div>
+    <div class="heart-bg" id="heartBg"></div>
 
-    <div class="card-container">
-        <div class="card" id="card">
-            <div class="card-front">
-                <div class="heart-icon">❤️</div>
-                <h1 class="sorry-title">I'm Sorry 🫂</h1>
-                <div class="name">Mo Dhana</div>
-                <div class="love-message">I Love You ❤️</div>
-                <p class="message">
-                    I never meant to hurt you<br>
-                    You mean everything to me<br>
-                    Please forgive me
-                </p>
-                <div class="click-hint">Click to see more 💕</div>
-            </div>
-            <div class="card-back">
-                <div class="heart-icon">❤️</div>
-                <div class="apology-message">
-                    My dearest Shobha,<br><br>
-                    I'm truly sorry for hurting you.<br>
-                    You are my world, my heart, my everything.<br><br>
-                    I love you more than anything,<br>
-                    Please accept my heartfelt apology.
+    <div class="envelope-container">
+        <div class="envelope" id="envelope">
+            <div class="envelope-base">
+                <div class="letter-content">
+                    <div class="teddy-container">
+                        <div class="teddy-hearts">
+                            <div class="teddy-heart">💖</div>
+                            <div class="teddy-heart">💕</div>
+                            <div class="teddy-heart">💗</div>
+                            <div class="teddy-heart">💓</div>
+                        </div>
+                        <div class="teddy-bear">🧸</div>
+                    </div>
+                    
+                    <h1 class="sorry-title">I'm Sorry 🫂</h1>
+                    <div class="name">Mo Dhana</div>
+                    <div class="love-message">I Love You ❤️</div>
+                    <p class="message">
+                        I never meant to hurt you<br>
+                        You mean everything to me<br>
+                        Please forgive me
+                    </p>
+                    
+                    <div class="heart-decoration">💝</div>
+                    <div class="heart-decoration">💞</div>
+                    <div class="heart-decoration">💟</div>
+                    <div class="heart-decoration">💖</div>
+                    
+                    <div class="click-hint">Click to see more 💕</div>
                 </div>
-                <div class="signature">With all my love 💕</div>
+                
+                <div class="back-content">
+                    <div class="back-teddy">🧸</div>
+                    <div class="apology-message">
+                        My dearest Shobha,<br><br>
+                        I'm truly sorry for hurting you.<br>
+                        You are my world, my heart, my everything.<br><br>
+                        I love you more than anything,<br>
+                        Please accept my heartfelt apology.
+                    </div>
+                    <div class="signature">With all my love 💕</div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Create enhanced stars background
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 150; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                starsContainer.appendChild(star);
-            }
-        }
-
-        // Create floating hearts
+        // Create floating hearts background
         function createFloatingHeart() {
-            const heartsContainer = document.getElementById('heartsContainer');
+            const heartBg = document.getElementById('heartBg');
             const heart = document.createElement('div');
             heart.className = 'floating-heart';
-            const hearts = ['💖', '❤️', '💕', '💗', '💓', '💝', '💞', '💟'];
+            const hearts = ['💖', '❤️', '💕', '💗', '💓', '💝', '💞', '💟', '💘', '💌'];
             heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
             heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 4 + 8) + 's';
-            heart.style.animationDelay = Math.random() * 2 + 's';
-            heartsContainer.appendChild(heart);
+            heart.style.animationDuration = (Math.random() * 5 + 12) + 's';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 25) + 'px';
+            heartBg.appendChild(heart);
 
             setTimeout(() => {
                 heart.remove();
-            }, 12000);
+            }, 18000);
         }
 
-        // Create rose petals
-        function createPetal() {
-            const petalsContainer = document.getElementById('petalsContainer');
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.animationDuration = (Math.random() * 4 + 10) + 's';
-            petal.style.animationDelay = Math.random() * 2 + 's';
-            petal.style.width = (Math.random() * 10 + 10) + 'px';
-            petal.style.height = petal.style.width;
-            petalsContainer.appendChild(petal);
-
-            setTimeout(() => {
-                petal.remove();
-            }, 14000);
-        }
-
-        // Enhanced sparkles with colors
+        // Create sparkles
         function createSparkle(x, y) {
-            const colors = ['#ffffff', '#ffd700', '#ff69b4', '#ff1493', '#ffb6c1'];
+            const colors = ['#ffffff', '#ffd700', '#ff69b4', '#ff1493', '#ffb6c1', '#ffc0cb'];
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
             sparkle.style.left = x + 'px';
@@ -591,97 +610,83 @@
 
         // Create particle burst
         function createParticleBurst(x, y) {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = x + 'px';
-                    particle.style.top = y + 'px';
-                    const angle = (Math.PI * 2 * i) / 30;
-                    const distance = 50 + Math.random() * 50;
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = x + 'px';
+                    sparkle.style.top = y + 'px';
+                    const angle = (Math.PI * 2 * i) / 40;
+                    const distance = 60 + Math.random() * 60;
                     const vx = Math.cos(angle) * distance;
                     const vy = Math.sin(angle) * distance;
-                    particle.style.setProperty('--vx', vx + 'px');
-                    particle.style.setProperty('--vy', vy + 'px');
-                    particle.style.animation = `particleFloat 2s ease-out forwards`;
-                    particle.style.transform = `translate(${vx}px, ${vy}px)`;
-                    document.body.appendChild(particle);
+                    sparkle.style.transform = `translate(${vx}px, ${vy}px)`;
+                    const colors = ['#ffffff', '#ffd700', '#ff69b4', '#ff1493', '#ffb6c1'];
+                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    sparkle.style.boxShadow = `0 0 15px ${sparkle.style.background}`;
+                    document.body.appendChild(sparkle);
 
                     setTimeout(() => {
-                        particle.remove();
+                        sparkle.remove();
                     }, 2000);
-                }, i * 20);
+                }, i * 15);
             }
         }
 
-        // Card flip functionality with enhanced effects
-        const card = document.getElementById('card');
+        // Envelope flip functionality
+        const envelope = document.getElementById('envelope');
         let isFlipped = false;
 
-        card.addEventListener('click', function() {
+        envelope.addEventListener('click', function() {
             isFlipped = !isFlipped;
             if (isFlipped) {
-                card.classList.add('flipped');
+                envelope.classList.add('flipped');
             } else {
-                card.classList.remove('flipped');
+                envelope.classList.remove('flipped');
             }
             
-            // Create enhanced sparkles on click
-            const rect = card.getBoundingClientRect();
+            // Create particle burst on click
+            const rect = envelope.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
-            
-            // Particle burst
             createParticleBurst(centerX, centerY);
-            
-            // Sparkle ring
-            for (let i = 0; i < 30; i++) {
-                setTimeout(() => {
-                    const angle = (Math.PI * 2 * i) / 30;
-                    const distance = 80 + Math.random() * 40;
-                    const x = centerX + Math.cos(angle) * distance;
-                    const y = centerY + Math.sin(angle) * distance;
-                    createSparkle(x, y);
-                }, i * 25);
-            }
         });
 
-        // Initialize
-        createStars();
-        
-        // Create initial hearts
-        for (let i = 0; i < 20; i++) {
-            setTimeout(() => createFloatingHeart(), i * 400);
+        // Initialize floating hearts
+        for (let i = 0; i < 25; i++) {
+            setTimeout(() => createFloatingHeart(), i * 500);
         }
         
-        // Create initial petals
-        for (let i = 0; i < 15; i++) {
-            setTimeout(() => createPetal(), i * 600);
-        }
-        
-        // Continue creating hearts and petals
-        setInterval(createFloatingHeart, 2500);
-        setInterval(createPetal, 3000);
+        // Continue creating hearts
+        setInterval(createFloatingHeart, 3000);
 
-        // Enhanced sparkles on mouse move
+        // Sparkles on mouse move
         let sparkleTimeout;
         document.addEventListener('mousemove', function(e) {
             clearTimeout(sparkleTimeout);
             sparkleTimeout = setTimeout(() => {
-                if (Math.random() > 0.6) {
+                if (Math.random() > 0.7) {
                     createSparkle(e.clientX, e.clientY);
                 }
-            }, 80);
+            }, 100);
         });
 
-        // Create sparkles on card hover
-        card.addEventListener('mousemove', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            if (Math.random() > 0.85) {
+        // Sparkles on envelope hover
+        envelope.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.8) {
                 createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        // Add extra hearts on click
+        envelope.addEventListener('click', function(e) {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const rect = envelope.getBoundingClientRect();
+                    const x = rect.left + Math.random() * rect.width;
+                    const y = rect.top + Math.random() * rect.height;
+                    createSparkle(x, y);
+                }, i * 50);
             }
         });
     </script>
